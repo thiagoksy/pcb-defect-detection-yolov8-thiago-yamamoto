@@ -1,3 +1,5 @@
+# Author: Thiago Yamamoto
+
 # 📈 Model Evaluation & Engineering Insights
 
 This document breaks down the performance metrics, quantitative results, and real-world edge cases observed during the training and validation of the PCB defect detection model.
