@@ -2,6 +2,17 @@
 
 This document breaks down the performance metrics, quantitative results, and real-world edge cases observed during the training and validation of the PCB defect detection model.
 
+## ⚡ Hardware Resource Utilization & GPU Load Analysis
+
+Monitoring hardware behavior via Windows Task Manager during training runs revealed critical insights regarding how parameter choices impact local GPU stress on an entry-level card (NVIDIA GTX 1650, 4GB VRAM):
+
+* **High-Epoch / High-Resolution Instability (50 Epochs at `imgsz=640`):**  **`/15_epochs/gpu_50_epochs.png`**:
+  * *Behavior:* The GPU utilization graph displays dramatic "sawtooth" fluctuations, cycling rapidly between 100% activity and sudden drops.
+  * *Engineering Cause:* This indicates a data-feeding bottleneck. The larger image size combined with heavy processing limits caused the CPU and data loaders to struggle to feed batches fast enough, forcing the GPU into idle periods while waiting for data. This erratic load profile increases thermal stress and bus micro-stuttering.
+* **Optimized Stable Execution (15 Epochs at `imgsz=416`, `batch=8`):**   **`/15_epochs/gpu_15_epochs.png`**:
+  * *Behavior:* The utilization graph stabilizes into a smooth, steady line (averaging around 74%), with lower VRAM consumption (~1.8 GB).
+  * *Engineering Cause:* Lowering the image resolution and right-sizing the batch parameters allowed a balanced pipeline synchronization between data loading and parallel GPU execution, ensuring a clean, continuous thermal and processing state.
+
 ---
 
 ## 📊 Quantitative Metrics (After 15 Epochs)
