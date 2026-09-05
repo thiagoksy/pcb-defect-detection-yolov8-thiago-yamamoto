@@ -52,6 +52,42 @@ The repository is organized into modular scripts for training and inference:
 
 ### 1. Prerequisites
 Install the required dependencies:
+I'm using Python 3.11.0
 ```bash
 pip install ultralytics opencv-python torch
-I'm used python 3.11.0
+```
+
+### 2. Training the Model
+To train the model from scratch or fine-tune it further, run:
+```bash
+python train.py
+```
+Or depending on how it was installed
+```bash
+py train.py
+```
+
+### 3. Running Batch Inference
+To test the model on a folder of unseen PCB images:
+```bash
+python predict_folder.py
+```
+Or depending on how it was installed
+```bash
+py predict_folder.py
+```
+
+### 4. Real-Time Webcam Detection
+To test live inference using your webcam:
+```bash
+python predict_webcam.py
+```
+Or depending on how it was installed
+```bash
+py predict_webcam.py
+```
+
+📈 Future Improvements
+[ ] Expand dataset size and balance underrepresented classes (slug, spillover).
+[ ] Increase training epochs to 30+ to allow convergence on recall curves.
+[ ] Implement test-time augmentation (TTA) to reduce false positives on through-holes.
