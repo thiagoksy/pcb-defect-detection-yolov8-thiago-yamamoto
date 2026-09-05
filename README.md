@@ -88,7 +88,8 @@ Or depending on how it was installed
 py predict_webcam.py
 ```
 
-📈 Future Improvements
+### 📈 Future Improvements
+
 [ ] Expand dataset size and balance underrepresented classes (slug, spillover).
 
 [ ] Increase training epochs to 30+ to allow convergence on recall curves.
