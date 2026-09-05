@@ -41,6 +41,7 @@ Computer vision pipeline developed to detect and classify manufacturing defects 
 ## 🛠️ Project Structure
 
 The repository is organized into modular scripts for training and inference:
+I'm using only the dataset from Roboflow
 
 1. **`train.py`**: Configures and executes the YOLOv8 training loop over the dataset.
 2. **`predict_folder.py`**: Runs batch inference on a given test dataset folder, saving bounded-box visualizations.
@@ -89,5 +90,7 @@ py predict_webcam.py
 
 📈 Future Improvements
 [ ] Expand dataset size and balance underrepresented classes (slug, spillover).
+
 [ ] Increase training epochs to 30+ to allow convergence on recall curves.
+
 [ ] Implement test-time augmentation (TTA) to reduce false positives on through-holes.
